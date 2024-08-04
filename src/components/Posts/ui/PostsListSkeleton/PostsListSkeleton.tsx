@@ -7,7 +7,7 @@ interface IPostsListSkeleton {
 export const PostsListSkeleton = ({ itemsCount = 20 }: IPostsListSkeleton) => {
   return (
     <ul>
-      {new Array(itemsCount).fill(0).map((item: number, i) => (
+      {new Array(itemsCount).fill(0).map((_, i) => (
         <li key={i}>
           <Skeleton variant='text' width={610} height={25} />
         </li>

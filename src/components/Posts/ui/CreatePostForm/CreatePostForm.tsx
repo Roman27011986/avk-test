@@ -15,10 +15,14 @@ import schema from './schema';
 
 interface FormValues {
   title: string,
-  body: string,
+  body: string
 };
 
-export const CreatePostForm = () => {
+interface ICreatePostFormProps {
+  onhandleOpenForm: () => void
+};
+
+export const CreatePostForm = ({ onhandleOpenForm }:ICreatePostFormProps) => {
   const formRef = useRef<HTMLButtonElement>(null);
   const { push } = useRouter();
 
@@ -48,6 +52,7 @@ export const CreatePostForm = () => {
         return [newPost]
       });
 
+      onhandleOpenForm();
       push(`/${newPost.id}`);
     },
   });

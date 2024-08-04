@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useState } from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 import { PostsList } from '../PostsList/PostsList';
 import { PostsListSkeleton } from '../PostsListSkeleton/PostsListSkeleton';
 import { Button, Dialog, DialogContent, Pagination, Slide } from '@mui/material';
@@ -35,9 +35,9 @@ export const Posts = () => {
     setCurrentPage(value);
   };
 
-  const handleOpenForm = () => {
+  const handleOpenForm = useCallback(() => {
     setIsOpenCreatePostForm(prev => !prev);
-  };
+  }, []);
 
   if (isLoading) return <PostsListSkeleton />
 
@@ -62,7 +62,7 @@ export const Posts = () => {
         open={isOpenCreatePostForm}
         TransitionComponent={Transition}>
         <DialogContent>
-          <CreatePostForm />
+          <CreatePostForm onhandleOpenForm={handleOpenForm} />
         </DialogContent>
       </Dialog>
     </>

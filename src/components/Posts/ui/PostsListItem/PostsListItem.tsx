@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import { IPost } from '../../model/types';
 
 interface IPostsListItemProps {

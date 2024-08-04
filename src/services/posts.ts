@@ -8,33 +8,39 @@ const getPosts: QueryFunction<TPostsList, [string, number]> = async ({ queryKey 
   try {
     const [_key, page] = queryKey;
     const { data } = await apiPosts.get(`posts?_limit=20&_page=${page}`);
-    toast.success(`success posts page ${page}`);
+    toast.success(`success getPosts page ${page}`);
     return data;
   } catch (error) {
-    throw new Error('posts not found');
+    throw new Error('error getPosts');
   };
 };
 
 const getPostById: QueryFunction<IPost, [string, string]> = async ({ queryKey }) => {
-    try {
-      const [_key, postId] = queryKey;
-      const { data } = await apiPosts.get(`posts/${postId}`);
-      return data;
-    } catch (error) {
-      throw new Error('api not save created post :)');
-    }
+  try {
+    const [_key, postId] = queryKey;
+    const { data } = await apiPosts.get(`posts/${postId}`);
+    toast.success('success getPostById');
+    return data;
+  } catch (error) {
+    throw new Error('error getPostById');
+  }
 };
 
 const getCommentsByPostId: QueryFunction<TCommentsList, [string, string]> = async ({ queryKey }) => {
-  const [_key, postId] = queryKey;
-  const { data } = await apiPosts.get(`posts/${postId}/comments`);
-  return data;
+  try {
+    const [_key, postId] = queryKey;
+    const { data } = await apiPosts.get(`posts/${postId}/comments`);
+    toast.success('success getCommentsByPostId');
+    return data;
+  } catch (error) {
+    throw new Error('error getCommentsByPostId');
+  }
 };
 
 const createPost: MutationFunction<Omit<IPost, number>> = async (newPost) => {
   try {
     const { data } = await apiPosts.post('posts', newPost);
-    toast.success(`success sdded new post in 6 page`);
+    toast.success(`success createPost`);
     return data;
   } catch (error) {
     throw new Error('error create post');
