@@ -9,7 +9,6 @@ export const PostsListItem = ({ post }: IPostsListItemProps) => {
   return (
     <Link
       href={`/${post.id}`}
-      rel='preload'
       className='block w-full text-orange-900'
     >
       {post.title}
