@@ -1,3 +1,4 @@
 const INITIAL_PAGE = 1;
+const CREATED_POST_PAGE = 6;
 
-export { INITIAL_PAGE };
+export { INITIAL_PAGE, CREATED_POST_PAGE };

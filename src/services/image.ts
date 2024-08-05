@@ -1,6 +1,7 @@
 import { getPlaiceholder } from 'plaiceholder';
 
-const getImage = async (src: string) => {
+const getImage = async (postId: string) => {
+  const src = `https://via.assets.so/furniture.png?id=${postId}&q=95&w=320&h=320&fit=fill`
   const buffer = await fetch(src).then(async (res) =>
     Buffer.from(await res.arrayBuffer()));
 

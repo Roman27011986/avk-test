@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { v4 as uuidv4 } from 'uuid';
 import SendIcon from '@mui/icons-material/Send';
 import schema from './schema';
+import { CREATED_POST_PAGE } from '@/shared/constants';
 
 interface FormValues {
   title: string,
@@ -22,7 +23,7 @@ interface ICreatePostFormProps {
   onhandleOpenForm: () => void
 };
 
-export const CreatePostForm = ({ onhandleOpenForm }:ICreatePostFormProps) => {
+export const CreatePostForm = ({ onhandleOpenForm }: ICreatePostFormProps) => {
   const formRef = useRef<HTMLButtonElement>(null);
   const { push } = useRouter();
 
@@ -31,7 +32,9 @@ export const CreatePostForm = ({ onhandleOpenForm }:ICreatePostFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ mode: 'onChange', resolver: yupResolver(schema) });
+  } = useForm<FormValues>({
+    mode: 'onChange', resolver: yupResolver(schema)
+  });
 
   const queryClient = useQueryClient();
 
@@ -43,7 +46,9 @@ export const CreatePostForm = ({ onhandleOpenForm }:ICreatePostFormProps) => {
           id: uuidv4()
       };
     
-      queryClient.setQueryData([EQueryKeys.Posts, 6], (currentPosts: TPostsList) => {
+      queryClient.setQueryData([
+        EQueryKeys.Posts, CREATED_POST_PAGE
+      ], (currentPosts: TPostsList) => {
         
       if (currentPosts) {
         return [...currentPosts, newPost]

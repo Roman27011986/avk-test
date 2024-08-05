@@ -1,22 +1,12 @@
 'use client';
 
-import { forwardRef, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { PostsList } from '../PostsList/PostsList';
 import { PostsListSkeleton } from '../PostsListSkeleton/PostsListSkeleton';
-import { Button, Dialog, DialogContent, Pagination, Slide } from '@mui/material';
+import { Button, Dialog, DialogContent, Pagination } from '@mui/material';
 import { CreatePostForm } from '../CreatePostForm/CreatePostForm';
 import { usePosts } from '@/hooks/hooks';
 import { INITIAL_PAGE } from '@/shared/constants';
-import { TransitionProps } from '@mui/material/transitions';
-
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
 
 export const Posts = () => {
   const [currentPage, setCurrentPage] = useState(INITIAL_PAGE);
@@ -60,7 +50,7 @@ export const Posts = () => {
         maxWidth='sm'
         onClose={handleOpenForm}
         open={isOpenCreatePostForm}
-        TransitionComponent={Transition}>
+      >
         <DialogContent>
           <CreatePostForm onhandleOpenForm={handleOpenForm} />
         </DialogContent>

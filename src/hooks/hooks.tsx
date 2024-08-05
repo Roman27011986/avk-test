@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCommentsByPostId, getPostById, getPosts } from '@/services/posts';
 import { EQueryKeys } from '@/shared/types';
+import { getImage } from '@/services/image';
 
 const usePosts = (page: number) => {
   return useQuery({
@@ -14,15 +15,14 @@ const usePost = (postId: string) => {
   return useQuery({
     queryKey: [EQueryKeys.Post, postId],
     queryFn: getPostById,
-    retry: false
+    retry: false,
   });
 };
 
-const useComments = (postId: string, enabled: boolean) => {
+const useComments = (postId: string) => {
   return useQuery({
     queryKey: [EQueryKeys.Comments, postId],
-    queryFn: getCommentsByPostId,
-    enabled
+    queryFn: getCommentsByPostId
   });
 };
 
