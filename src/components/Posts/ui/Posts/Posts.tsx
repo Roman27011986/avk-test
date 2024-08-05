@@ -7,7 +7,7 @@ import { Button, Dialog, DialogContent, Pagination } from '@mui/material';
 import { CreatePostForm } from '../CreatePostForm/CreatePostForm';
 import { usePosts } from '@/hooks/hooks';
 import { INITIAL_PAGE } from '@/shared/constants';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { EQueryParams } from '@/shared/types';
 
 export const Posts = () => {

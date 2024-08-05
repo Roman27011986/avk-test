@@ -3,6 +3,7 @@ import { Posts } from '@/components/Posts/ui/Posts/Posts';
 import { getPosts } from '@/services/posts';
 import { EQueryKeys } from '@/shared/types';
 import { INITIAL_PAGE } from '@/shared/constants';
+import { Suspense } from 'react'
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -15,7 +16,9 @@ export default async function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-evenly'>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <Posts />
+        <Suspense>
+          <Posts />
+        </Suspense>
       </HydrationBoundary>
     </main>
   );
