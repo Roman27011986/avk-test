@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCommentsByPostId, getPostById, getPosts } from '@/services/posts';
 import { EQueryKeys } from '@/shared/types';
-import { getImage } from '@/services/image';
 
 const usePosts = (page: number) => {
   return useQuery({

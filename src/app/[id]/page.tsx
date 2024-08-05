@@ -1,5 +1,5 @@
 import { getImage } from '@/services/image';
-import { Post } from '@/components/PostDitails/ui/Post/Post';
+import { Post } from '@/components/Post/ui/Post/Post';
 
 interface IPostProps {
   params: { id: string };
@@ -7,7 +7,6 @@ interface IPostProps {
 
 export default async function PostPage({ params }: IPostProps) {
   const postId = params.id;
-
   const { base64, img } = await getImage(postId);
 
   return (

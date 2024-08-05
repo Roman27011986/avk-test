@@ -18,7 +18,7 @@ interface IPostDitails {
 
 export const Post = ({ postId, imgData }: IPostDitails) => {
   const queryClient = useQueryClient();
-
+  
   const {
     data: postData,
     isSuccess: isPostSuccess,
@@ -28,10 +28,15 @@ export const Post = ({ postId, imgData }: IPostDitails) => {
   const post = useMemo(() => {
     if (isPostSuccess) return postData;
 
-    const createdPosts = queryClient.getQueryData([EQueryKeys.Posts, CREATED_POST_PAGE]);
+    const createdPosts = queryClient.getQueryData([
+      EQueryKeys.Posts,
+      CREATED_POST_PAGE
+    ]);
 
     if (Array.isArray(createdPosts)) {
-      return createdPosts.find((post) => post.id === postId);
+      return createdPosts.find(
+        (post) => post.id === postId
+      );
     };
     
   }, [isPostSuccess, postData, queryClient, postId]);

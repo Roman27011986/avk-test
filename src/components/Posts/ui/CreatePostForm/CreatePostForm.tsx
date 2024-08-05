@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import { Stack, Typography, OutlinedInput, TextField, Button } from '@mui/material';
+import { Stack, Typography, OutlinedInput, Button } from '@mui/material';
 import { EKeyCode } from '@/shared/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createPost } from '@/services/posts';
@@ -56,7 +56,7 @@ export const CreatePostForm = ({ onhandleOpenForm }: ICreatePostFormProps) => {
                 
         return [newPost]
       });
-
+      
       onhandleOpenForm();
       push(`/${newPost.id}`);
     },

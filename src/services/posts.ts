@@ -1,5 +1,5 @@
 import { apiPosts } from '@/api';
-import { TCommentsList } from '@/components/PostDitails/model/types';
+import { TCommentsList } from '@/components/Post/model/types';
 import { IPost, TPostsList } from '@/components/Posts/model/types'; 
 import { MutationFunction, QueryFunction } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';

@@ -9,6 +9,10 @@ export enum EQueryKeys {
     PostImg = 'postImg'
 };
 
+export enum EQueryParams {
+    Page = 'page'
+};
+
 export interface IImgData {
     img: {
         src: string;
